@@ -493,9 +493,14 @@
               </p>
             </div>
           </div>
-
-          <div class="use-case-1">
-            <h2>1. GPU Memory Management and Allocation</h2>
+          <br>
+          <br>
+          <div class="container">
+          <div class="flow-text">
+            <h4 class="teal-text">1. GPU Memory Management and Allocation</h4>
+            <div style="text-align: center;">
+              <img src="/assets/img/use-case-1.jpg" class="responsive-img" alt="Description of image">
+            </div>
             <p><strong>Business Use Case</strong>: NVIDIA's CUDA runtime and memory management systems utilize sophisticated algorithms to optimize GPU memory allocation for parallel computing workloads. Dynamic programming and greedy algorithms are employed to efficiently allocate and deallocate GPU memory blocks, ensuring maximum utilization of VRAM across thousands of concurrent threads.</p>
             <p><strong>NVIDIA Infrastructure</strong>: GPU Memory Allocator using Dynamic Programming for optimal VRAM utilization</p>
             <p><strong>Challenges</strong>: Efficient memory allocation across thousands of parallel threads, minimizing memory fragmentation.</p>
@@ -505,20 +510,318 @@
               <li>
                 <strong>Dynamic Programming</strong>: Optimal substructure for memory block allocation
                 <ul>
-                  <li><strong>Time Complexity</strong>: O(n log n) where n is the number of memory requests</li>
-                  <li><strong>Space Complexity</strong>: O(n) for tracking allocated blocks</li>
+                  <li>Time Complexity: O(n log n) where n is the number of memory requests</li>
+                  <li>Space Complexity: O(n) for tracking allocated blocks</li>
                 </ul>
               </li>
+              <br>
               <li>
                 <strong>First-Fit/Best-Fit Algorithms</strong>: Greedy approach for memory placement
                 <ul>
-                  <li><strong>Time Complexity</strong>: O(n) for allocation, O(1) for deallocation</li>
-                  <li><strong>Space Complexity</strong>: O(n) for free block tracking</li>
+                  <li>Time Complexity: O(n) for allocation, O(1) for deallocation</li>
+                  <li>Space Complexity: O(n) for free block tracking</li>
                 </ul>
               </li>
             </ul>
           </div>
+          </div>
+          <br>
+          <br>
 
+          <div class="container">
+          <div class="flow-text">
+            <h4 class="teal-text">2. Ray Tracing and Path Finding in RTX Graphics</h4>
+            <div style="text-align: center;">
+              <img src="/assets/img/use-case-2.png" class="responsive-img" alt="Description of image">
+            </div>
+            <p><strong>Business Use Case</strong>: NVIDIA's RTX GPUs implement advanced ray tracing using BVH (Bounding Volume Hierarchy) construction algorithms and A* pathfinding for light ray optimization. These algorithms enable real-time ray tracing by efficiently traversing 3D scenes and calculating light interactions.</p>
+            <p><strong>NVIDIA Infrastructure</strong>: BVH Tree Construction and A Algorithm for real-time ray tracing in RTX GPUs.</p>
+            <p><strong>Challenges</strong>: Real-time ray tracing calculations, efficient scene traversal, light path optimization.</p>
+            <p><strong>Market Benefits</strong>: Photorealistic graphics, enhanced gaming experience, accelerated 3D rendering workflows.</p>
+            <p><strong>Algorithms, Design Techniques, Performance Analysis</strong>:</p>
+            <ul>
+              <li>
+                <strong>BVH Construction</strong>: Divide and conquer, Spatial partitioning
+                <ul>
+                  <li>Time Complexity: O(n log n) where n is the number of primitives</li>
+                  <li>Space Complexity: O(n) for tree storage</li>
+                </ul>
+              </li>
+              <br>
+              <li>
+                <strong>A* Algorithm</strong>: Heuristic search for optimal light paths
+                <ul>
+                  <li>Time Complexity: O(b^d) where b is branching factor and d is depth</li>
+                  <li>Space Complexity: O(b^d) for path storage</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          </div>
+          <br>
+          <br>
+
+          <div class="container">
+          <div class="flow-text">
+            <h4 class="teal-text">3. Neural Network Training Optimization</h4>
+            <div style="text-align: center;">
+              <video class="responsive-video" autoplay muted loop playsinline>
+              <source src="/assets/img/use-case-3.webm" type="video/webm">
+              Your browser does not support the video tag.
+              </video>
+            </div>
+            <p><strong>Business Use Case</strong>: NVIDIA's cuDNN library and Tensor Core architecture employ gradient descent algorithms and backpropagation optimization for deep learning model training. Advanced scheduling algorithms manage thousands of parallel matrix operations across GPU cores.</p>
+            <p><strong>NVIDIA Infrastructure</strong>: Gradient Descent and Adam Optimizer for accelerated neural network training.</p>
+            <p><strong>Challenges</strong>: Efficient parallel matrix computations, gradient optimization, memory bandwidth utilization.</p>
+            <p><strong>Market Benefits</strong>: Faster AI model training, reduced time-to-market for AI applications, improved model accuracy.</p>
+            <p><strong>Algorithms, Design Techniques, Performance Analysis</strong>:</p>
+            <ul>
+              <li>
+                <strong>Stochastic Gradient Descent</strong>:  Iterative optimization
+                <ul>
+                  <li>Time Complexity: O(n * m * k) where n is samples, m is features, k is iterations</li>
+                  <li>Space Complexity: O(m) for gradient storage</li>
+                </ul>
+              </li>
+              <br>
+              <li>
+                <strong>Adam Optimizer</strong>: Adaptive learning rate, Momentum-based optimization
+                <ul>
+                  <li>Time Complexity: O(n * m * k) with additional momentum calculations</li>
+                  <li>Space Complexity: O(m) for momentum and velocity vectors</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          </div>
+          <br>
+          <br>
+
+          <div class="container">
+          <div class="flow-text">
+            <h4 class="teal-text">4. CUDA Thread Scheduling and Warp Management</h4>
+            <div style="text-align: center;">
+              <img src="/assets/img/use-case-4.jpg" class="responsive-img" alt="Description of image">
+            </div>
+            <p><strong>Business Use Case</strong>: NVIDIA's CUDA architecture uses sophisticated scheduling algorithms to manage thousands of threads across multiple streaming multiprocessors (SMs). Round-robin and priority-based scheduling ensure optimal thread execution and resource utilization.</p>
+            <p><strong>NVIDIA Infrastructure</strong>: Thread Scheduling Algorithms for optimal CUDA core utilization.</p>
+            <p><strong>Challenges</strong>: Efficient thread scheduling across multiple SMs, warp divergence minimization, resource contention management.</p>
+            <p><strong>Market Benefits</strong>: Maximum GPU utilization, improved parallel computing performance, reduced execution latency.</p>
+            <p><strong>Algorithms, Design Techniques, Performance Analysis</strong>:</p>
+            <ul>
+              <li>
+                <strong>Round-Robin Scheduling</strong>: Fair resource allocation
+                <ul>
+                  <li>Time Complexity: O(1) for thread selection</li>
+                  <li>Space Complexity: O(n) where n is number of threads</li>
+                </ul>
+              </li>
+              <br>
+              <li>
+                <strong>Priority Scheduling</strong>: Dynamic priority assignment
+                <ul>
+                  <li>Time Complexity: O(log n) using priority queues</li>
+                  <li>Space Complexity: O(n) for priority tracking</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          </div>
+          <br>
+          <br>
+
+          <div class="container">
+          <div class="flow-text">
+            <h4 class="teal-text">5. Autonomous Vehicle Path Planning (NVIDIA DRIVE)</h4>
+            <div style="text-align: center;">
+              <img src="/assets/img/use-case-5.gif" class="responsive-img" alt="Description of image">
+            </div>
+            <p><strong>Business Use Case</strong>: NVIDIA DRIVE platform utilizes Dijkstra's algorithm and RRT (Rapidly-exploring Random Trees) for real-time path planning in autonomous vehicles. These algorithms process sensor data and calculate optimal driving paths while avoiding obstacles.</p>
+            <p><strong>NVIDIA Infrastructure</strong>: Dijkstra's Algorithm and RRT for safe autonomous vehicle navigation.</p>
+            <p><strong>Challenges</strong>: Real-time path calculation, obstacle avoidance, dynamic environment adaptation.</p>
+            <p><strong>Market Benefits</strong>: Enhanced vehicle safety, improved autonomous driving capabilities, reduced accident rates.</p>
+            <p><strong>Algorithms, Design Techniques, Performance Analysis</strong>:</p>
+            <ul>
+              <li>
+                <strong>Dijkstra's Algorithm</strong>: Graph-based shortest path
+                <ul>
+                  <li>Time Complexity: O((V + E) log V) where V is waypoints and E is connections</li>
+                  <li>Space Complexity: O(V) for distance tracking</li>
+                </ul>
+              </li>
+              <br>
+              <li>
+                <strong>RRT Algorithm</strong>: Probabilistic path planning
+                <ul>
+                  <li>Time Complexity: O(n log n) where n is number of samples</li>
+                  <li>Space Complexity: O(n) for tree storage</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          </div>
+          <br>
+          <br>
+
+          <div class="container">
+          <div class="flow-text">
+            <h4 class="teal-text">6. Video Encoding/Decoding Optimization (NVENC/NVDEC)</h4>
+            <div style="text-align: center;">
+              <img src="/assets/img/use-case-6.png" class="responsive-img" alt="Description of image">
+            </div>
+            <p><strong>Business Use Case</strong>: NVIDIA's hardware encoders use Huffman coding and motion vector prediction algorithms for efficient video compression. Dynamic programming optimizes bit allocation across frames for maximum quality-to-size ratio.</p>
+            <p><strong>NVIDIA Infrastructure</strong>: Huffman Coding and Motion Vector Algorithms for hardware video encoding.</p>
+            <p><strong>Challenges</strong>: Real-time video encoding, compression efficiency, quality preservation.</p>
+            <p><strong>Market Benefits</strong>: High-quality streaming, reduced bandwidth usage, accelerated content creation workflows.</p>
+            <p><strong>Algorithms, Design Techniques, Performance Analysis</strong>:</p>
+            <ul>
+              <li>
+                <strong>Huffman Coding</strong>: Greedy algorithm for compression
+                <ul>
+                  <li>Time Complexity: O(n log n) where n is symbol frequency</li>
+                  <li>Space Complexity: O(n) for encoding table</li>
+                </ul>
+              </li>
+              <br>
+              <li>
+                <strong>Motion Vector Prediction</strong>: Pattern matching, Block-based algorithms
+                <ul>
+                  <li>Time Complexity:  O(w * h * s²) where w,h are dimensions and s is search range</li>
+                  <li>Space Complexity: O(s²) for search window</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          </div>
+          <br>
+          <br>
+
+          <div class="container">
+          <div class="flow-text">
+            <h4 class="teal-text">7. Distributed Computing Load Balancing (NVIDIA DGX)</h4>
+            <p><strong>Business Use Case</strong>: NVIDIA DGX systems employ load balancing algorithms to distribute computational workloads across multiple GPUs and nodes. Consistent hashing and weighted round-robin algorithms ensure optimal resource utilization in multi-GPU clusters.</p>
+            <p><strong>NVIDIA Infrastructure</strong>: Load Balancing Algorithms for distributed GPU computing in DGX systems.</p>
+            <p><strong>Challenges</strong>: Efficient workload distribution, inter-GPU communication optimization, fault tolerance.</p>
+            <p><strong>Market Benefits</strong>: Improved cluster utilization, reduced job completion times, enhanced scalability.</p>
+            <p><strong>Algorithms, Design Techniques, Performance Analysis</strong>:</p>
+            <ul>
+              <li>
+                <strong>Consistent Hashing</strong>: Distributed hash table approach
+                <ul>
+                  <li>Time Complexity: O(log n) where n is number of nodes</li>
+                  <li>Space Complexity: O(n) for hash ring storage</li>
+                </ul>
+              </li>
+              <br>
+              <li>
+                <strong>Weighted Round-Robin</strong>: Load-aware scheduling
+                <ul>
+                  <li>Time Complexity:  O(1) for selection</li>
+                  <li>Space Complexity: O(n) for weight tracking</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          </div>
+          <br>
+          <br>
+
+          <div class="container">
+          <div class="flow-text">
+            <h4 class="teal-text">8. Image Processing and Computer Vision (OpenCV CUDA)</h4>
+            <div style="text-align: center;">
+              <img src="/assets/img/use-case-8.png" class="responsive-img" alt="Description of image">
+            </div>
+            <p><strong>Business Use Case</strong>: NVIDIA's CUDA-accelerated OpenCV implementations use convolution algorithms and edge detection techniques for real-time image processing. Fast Fourier Transform (FFT) algorithms accelerate frequency domain operations.</p>
+            <p><strong>NVIDIA Infrastructure</strong>: Convolution and FFT Algorithms for accelerated computer vision processing.</p>
+            <p><strong>Challenges</strong>: Real-time image processing, parallel filter operations, memory-intensive computations.</p>
+            <p><strong>Market Benefits</strong>: Faster image analysis, enhanced computer vision applications, improved real-time processing capabilities.</p>
+            <p><strong>Algorithms, Design Techniques, Performance Analysis</strong>:</p>
+            <ul>
+              <li>
+                <strong>2D Convolution</strong>: Sliding window technique
+                <ul>
+                  <li>Time Complexity: O(n * m * k²) where n,m are image dimensions and k is kernel size</li>
+                  <li>Space Complexity: O(n * m) for output storage</li>
+                </ul>
+              </li>
+              <br>
+              <li>
+                <strong>Fast Fourier Transform</strong>: Divide and conquer
+                <ul>
+                  <li>Time Complexity:  O(n log n) where n is number of samples</li>
+                  <li>Space Complexity: O(n) for frequency domain representation</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          </div>
+          <br>
+          <br>
+
+          <div class="container">
+          <div class="flow-text">
+            <h4 class="teal-text">9. Cryptocurrency Mining Optimization</h4>
+            <div style="text-align: center;">
+              <img src="/assets/img/use-case-9.png" class="responsive-img" alt="Description of image">
+            </div>
+            <p><strong>Business Use Case</strong>: NVIDIA GPUs utilize hash function algorithms and nonce search optimization for cryptocurrency mining. Parallel search algorithms distribute hash computations across thousands of CUDA cores for maximum mining efficiency.</p>
+            <p><strong>NVIDIA Infrastructure</strong>: Parallel Hash Algorithms for cryptocurrency mining optimization.</p>
+            <p><strong>Challenges</strong>: Efficient hash rate maximization, power consumption optimization, thermal management.</p>
+            <p><strong>Market Benefits</strong>: Increased mining profitability, optimized energy efficiency, enhanced computational throughput.</p>
+            <p><strong>Algorithms, Design Techniques, Performance Analysis</strong>:</p>
+            <ul>
+              <li>
+                <strong>SHA-256 Hashing</strong>: Cryptographic hash function
+                <ul>
+                  <li>Time Complexity: O(1) per hash operation</li>
+                  <li>Space Complexity: O(1) for hash state</li>
+                </ul>
+              </li>
+              <br>
+              <li>
+                <strong>Parallel Nonce Search</strong>: Brute force with parallelization
+                <ul>
+                  <li>Time Complexity:  O(2^n / p) where n is difficulty and p is parallel processes</li>
+                  <li>Space Complexity: O(p) for parallel state tracking</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          </div>
+          <br>
+          <br>
+
+          <div class="container">
+          <div class="flow-text">
+            <h4 class="teal-text">10. Scientific Simulation and Molecular Dynamics</h4>
+            <div style="text-align: center;">
+              <img src="/assets/img/use-case-10.gif" class="responsive-img" alt="Description of image">
+            </div>
+            <p><strong>Business Use Case</strong>: NVIDIA's HPC platforms employ N-body simulation algorithms and molecular dynamics calculations for scientific research. Particle interaction algorithms utilize spatial partitioning and force calculation optimization.</p>
+            <p><strong>NVIDIA Infrastructure</strong>: N-body Algorithms and Spatial Partitioning for scientific simulations.</p>
+            <p><strong>Challenges</strong>: Complex particle interactions, numerical precision, massive scale computations.</p>
+            <p><strong>Market Benefits</strong>: Accelerated scientific research, improved simulation accuracy, reduced time-to-discovery.</p>
+            <p><strong>Algorithms, Design Techniques, Performance Analysis</strong>:</p>
+            <ul>
+              <li>
+                <strong>N-body Simulation</strong>: Gravitational/electromagnetic force calculations
+                <ul>
+                  <li>Time Complexity: O(n²) for direct calculation, O(n log n) with optimization</li>
+                  <li>Space Complexity: O(n) for particle storage</li>
+                </ul>
+              </li>
+              <br>
+              <li>
+                <strong>Spatial Partitioning</strong>: Grid-based optimization
+                <ul>
+                  <li>Time Complexity:  O(n) for particle assignment</li>
+                  <li>Space Complexity: O(n + g) where g is grid cells</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          </div>
         </section>
 
     <!-- Eight Section: Contact -->
