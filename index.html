@@ -493,6 +493,32 @@
               </p>
             </div>
           </div>
+
+          <div class="use-case-1">
+            <h2>1. GPU Memory Management and Allocation</h2>
+            <p><strong>Business Use Case</strong>: NVIDIA's CUDA runtime and memory management systems utilize sophisticated algorithms to optimize GPU memory allocation for parallel computing workloads. Dynamic programming and greedy algorithms are employed to efficiently allocate and deallocate GPU memory blocks, ensuring maximum utilization of VRAM across thousands of concurrent threads.</p>
+            <p><strong>NVIDIA Infrastructure</strong>: GPU Memory Allocator using Dynamic Programming for optimal VRAM utilization</p>
+            <p><strong>Challenges</strong>: Efficient memory allocation across thousands of parallel threads, minimizing memory fragmentation.</p>
+            <p><strong>Market Benefits</strong>: Improved GPU performance, reduced memory waste, enhanced parallel computing efficiency.</p>
+            <p><strong>Algorithms, Design Techniques, Performance Analysis</strong>:</p>
+            <ul>
+              <li>
+                <strong>Dynamic Programming</strong>: Optimal substructure for memory block allocation
+                <ul>
+                  <li><strong>Time Complexity</strong>: O(n log n) where n is the number of memory requests</li>
+                  <li><strong>Space Complexity</strong>: O(n) for tracking allocated blocks</li>
+                </ul>
+              </li>
+              <li>
+                <strong>First-Fit/Best-Fit Algorithms</strong>: Greedy approach for memory placement
+                <ul>
+                  <li><strong>Time Complexity</strong>: O(n) for allocation, O(1) for deallocation</li>
+                  <li><strong>Space Complexity</strong>: O(n) for free block tracking</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
         </section>
 
     <!-- Eight Section: Contact -->
