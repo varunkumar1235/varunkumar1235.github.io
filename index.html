@@ -499,7 +499,10 @@
           <div class="flow-text">
             <h4 class="teal-text">1. GPU Memory Management and Allocation</h4>
             <div style="text-align: center;">
+              <figure>
               <img src="/assets/img/use-case-1.jpg" class="responsive-img" alt="Description of image">
+              <figcaption>DPX Instructions [1]</figcaption>
+              </figure>
             </div>
             <p><strong>Business Use Case</strong>: NVIDIA's CUDA runtime and memory management systems utilize sophisticated algorithms to optimize GPU memory allocation for parallel computing workloads. Dynamic programming and greedy algorithms are employed to efficiently allocate and deallocate GPU memory blocks, ensuring maximum utilization of VRAM across thousands of concurrent threads.</p>
             <p><strong>NVIDIA Infrastructure</strong>: GPU Memory Allocator using Dynamic Programming for optimal VRAM utilization</p>
@@ -513,7 +516,7 @@
                   <li>Time Complexity: O(n log n) where n is the number of memory requests</li>
                   <li>Space Complexity: O(n) for tracking allocated blocks</li>
                   <br>
-                  <li><a href="code/knapsack.html"><strong>Link to Code</strong></a></li>
+                  <li><a href="code/knapsack.html"><strong>Link to Code [2]</strong></a></li>
                 </ul>
               </li>
               <br>
@@ -523,7 +526,7 @@
                   <li>Time Complexity: O(n) for allocation, O(1) for deallocation</li>
                   <li>Space Complexity: O(n) for free block tracking</li>
                   <br>
-                  <li><a href="code/first-fit.html"><strong>Link to Code</strong></a></li>
+                  <li><a href="code/first-fit.html"><strong>Link to Code [3]</strong></a></li>
                 </ul>
               </li>
             </ul>
@@ -536,7 +539,10 @@
           <div class="flow-text">
             <h4 class="teal-text">2. Ray Tracing and Path Finding in RTX Graphics</h4>
             <div style="text-align: center;">
-              <img src="/assets/img/use-case-2.png" class="responsive-img" alt="Description of image">
+              <figure>
+                <img src="/assets/img/use-case-2.png" class="responsive-img" alt="Description of image">
+                <figcaption>A* algorithm in work [4]</figcaption>
+              </figure>
             </div>
             <p><strong>Business Use Case</strong>: NVIDIA's RTX GPUs implement advanced ray tracing using BVH (Bounding Volume Hierarchy) construction algorithms and A* pathfinding for light ray optimization. These algorithms enable real-time ray tracing by efficiently traversing 3D scenes and calculating light interactions.</p>
             <p><strong>NVIDIA Infrastructure</strong>: BVH Tree Construction and A Algorithm for real-time ray tracing in RTX GPUs.</p>
@@ -560,7 +566,7 @@
                   <li>Time Complexity: O(b^d) where b is branching factor and d is depth</li>
                   <li>Space Complexity: O(b^d) for path storage</li>
                   <br>
-                  <li><a href="code/a-star.html"><strong>Link to Code</strong></a></li>
+                  <li><a href="code/a-star.html"><strong>Link to Code [4]</strong></a></li>
                 </ul>
               </li>
             </ul>
@@ -571,36 +577,37 @@
 
           <div class="container">
           <div class="flow-text">
-            <h4 class="teal-text">3. Neural Network Training Optimization</h4>
+            <h4 class="teal-text">3. GeForce Experience Game Library Indexing</h4>
             <div style="text-align: center;">
-              <video class="responsive-video" autoplay muted loop playsinline>
-              <source src="/assets/img/use-case-3.webm" type="video/webm">
-              Your browser does not support the video tag.
+              <figure>  
+                <img src="/assets/img/trie.png" class="responsive-img" alt="Description of image">
+                <figcaption>Trie Data structure [5]</figcaption>
+              </figure>
               </video>
             </div>
-            <p><strong>Business Use Case</strong>: NVIDIA's cuDNN library and Tensor Core architecture employ gradient descent algorithms and backpropagation optimization for deep learning model training. Advanced scheduling algorithms manage thousands of parallel matrix operations across GPU cores.</p>
-            <p><strong>NVIDIA Infrastructure</strong>: Gradient Descent and Adam Optimizer for accelerated neural network training.</p>
-            <p><strong>Challenges</strong>: Efficient parallel matrix computations, gradient optimization, memory bandwidth utilization.</p>
-            <p><strong>Market Benefits</strong>: Faster AI model training, reduced time-to-market for AI applications, improved model accuracy.</p>
+            <p><strong>Business Use Case</strong>: NVIDIA GeForce Experience uses trie data structures and string matching algorithms to efficiently index and search through users' game libraries. This enables fast game detection, automatic optimization settings, and quick search functionality.</p>
+            <p><strong>NVIDIA Infrastructure</strong>: Trie Data Structure and KMP Algorithm for game library indexing and search.</p>
+            <p><strong>Challenges</strong>: Fast game title searching, efficient game detection, large library indexing.</p>
+            <p><strong>Market Benefits</strong>: Instant game search, automatic game detection, improved user experience.</p>
             <p><strong>Algorithms, Design Techniques, Performance Analysis</strong>:</p>
             <ul>
               <li>
-                <strong>Stochastic Gradient Descent</strong>:  Iterative optimization
+                <strong>Trie (Prefix Tree)</strong>: Character-based tree structure
                 <ul>
-                  <li>Time Complexity: O(n * m * k) where n is samples, m is features, k is iterations</li>
-                  <li>Space Complexity: O(m) for gradient storage</li>
+                  <li>Time Complexity: O(m) for insertion and search where m is string length</li>
+                  <li>Space Complexity: O(ALPHABET_SIZE * N * M) where N is number of strings and M is average length</li>
                   <br>
-                  <li><a href="code/gradient-descent.html"><strong>Link to Code</strong></a></li>
+                  <li><a href="code/trie.html"><strong>Link to Code [5]</strong></a></li>
                 </ul>
               </li>
               <br>
               <li>
-                <strong>Adam Optimizer</strong>: Adaptive learning rate, Momentum-based optimization
+                <strong>KMP (Knuth-Morris-Pratt)</strong>: String pattern matching
                 <ul>
-                  <li>Time Complexity: O(n * m * k) with additional momentum calculations</li>
-                  <li>Space Complexity: O(m) for momentum and velocity vectors</li>
+                  <li>Time Complexity: O(n + m) where n is text length and m is pattern length</li>
+                  <li>Space Complexity: O(m) for failure function array</li>
                   <br>
-                  <li><a href="code/adam.html"><strong>Link to Code</strong></a></li>
+                  <li><a href="code/kmp.html"><strong>Link to Code [6]</strong></a></li>
                 </ul>
               </li>
             </ul>
@@ -613,7 +620,10 @@
           <div class="flow-text">
             <h4 class="teal-text">4. CUDA Thread Scheduling and Warp Management</h4>
             <div style="text-align: center;">
+              <figure>
               <img src="/assets/img/use-case-4.jpg" class="responsive-img" alt="Description of image">
+                <figcaption>Scheduling resources</figcaption>
+              </figure>
             </div>
             <p><strong>Business Use Case</strong>: NVIDIA's CUDA architecture uses sophisticated scheduling algorithms to manage thousands of threads across multiple streaming multiprocessors (SMs). Round-robin and priority-based scheduling ensure optimal thread execution and resource utilization.</p>
             <p><strong>NVIDIA Infrastructure</strong>: Thread Scheduling Algorithms for optimal CUDA core utilization.</p>
@@ -627,7 +637,7 @@
                   <li>Time Complexity: O(1) for thread selection</li>
                   <li>Space Complexity: O(n) where n is number of threads</li>
                   <br>
-                  <li><a href="code/round-robin.html"><strong>Link to Code</strong></a></li>
+                  <li><a href="code/round-robin.html"><strong>Link to Code [7]</strong></a></li>
                 </ul>
               </li>
               <br>
@@ -637,7 +647,7 @@
                   <li>Time Complexity: O(log n) using priority queues</li>
                   <li>Space Complexity: O(n) for priority tracking</li>
                   <br>
-                  <li><a href="code/priority.html"><strong>Link to Code</strong></a></li>
+                  <li><a href="code/priority.html"><strong>Link to Code [8]</strong></a></li>
                 </ul>
               </li>
             </ul>
@@ -650,7 +660,10 @@
           <div class="flow-text">
             <h4 class="teal-text">5. Autonomous Vehicle Path Planning (NVIDIA DRIVE)</h4>
             <div style="text-align: center;">
+              <figure>
               <img src="/assets/img/use-case-5.gif" class="responsive-img" alt="Description of image">
+                <figcaption>Dijkstra's Algorithm [9]</figcaption>
+              </figure>
             </div>
             <p><strong>Business Use Case</strong>: NVIDIA DRIVE platform utilizes Dijkstra's algorithm and RRT (Rapidly-exploring Random Trees) for real-time path planning in autonomous vehicles. These algorithms process sensor data and calculate optimal driving paths while avoiding obstacles.</p>
             <p><strong>NVIDIA Infrastructure</strong>: Dijkstra's Algorithm and RRT for safe autonomous vehicle navigation.</p>
@@ -664,7 +677,7 @@
                   <li>Time Complexity: O((V + E) log V) where V is waypoints and E is connections</li>
                   <li>Space Complexity: O(V) for distance tracking</li>
                   <br>
-                  <li><a href="code/dijkstras.html"><strong>Link to Code</strong></a></li>
+                  <li><a href="code/dijkstras.html"><strong>Link to Code [10]</strong></a></li>
                 </ul>
               </li>
               <br>
@@ -674,7 +687,7 @@
                   <li>Time Complexity: O(n log n) where n is number of samples</li>
                   <li>Space Complexity: O(n) for tree storage</li>
                   <br>
-                  <li><a href="code/RRT.html"><strong>Link to Code</strong></a></li>
+                  <li><a href="code/RRT.html"><strong>Link to Code [11]</strong></a></li>
                 </ul>
               </li>
             </ul>
@@ -687,7 +700,10 @@
           <div class="flow-text">
             <h4 class="teal-text">6. Video Encoding/Decoding Optimization (NVENC/NVDEC)</h4>
             <div style="text-align: center;">
+              <figure>
               <img src="/assets/img/use-case-6.png" class="responsive-img" alt="Description of image">
+              <figcaption>Huffman tree generated [12]</figcaption>
+              </figure>
             </div>
             <p><strong>Business Use Case</strong>: NVIDIA's hardware encoders use Huffman coding and motion vector prediction algorithms for efficient video compression. Dynamic programming optimizes bit allocation across frames for maximum quality-to-size ratio.</p>
             <p><strong>NVIDIA Infrastructure</strong>: Huffman Coding and Motion Vector Algorithms for hardware video encoding.</p>
@@ -701,7 +717,7 @@
                   <li>Time Complexity: O(n log n) where n is symbol frequency</li>
                   <li>Space Complexity: O(n) for encoding table</li>
                   <br>
-                  <li><a href="code/huffman.html"><strong>Link to Code</strong></a></li>
+                  <li><a href="code/huffman.html"><strong>Link to Code [13]</strong></a></li>
                 </ul>
               </li>
               <br>
@@ -733,7 +749,7 @@
                   <li>Time Complexity: O(log n) where n is number of nodes</li>
                   <li>Space Complexity: O(n) for hash ring storage</li>
                   <br>
-                  <li><a href="code/consistent.html"><strong>Link to Code</strong></a></li>
+                  <li><a href="code/consistent.html"><strong>Link to Code [14]</strong></a></li>
                 </ul>
               </li>
               <br>
@@ -743,7 +759,7 @@
                   <li>Time Complexity:  O(1) for selection</li>
                   <li>Space Complexity: O(n) for weight tracking</li>
                   <br>
-                  <li><a href="code/w-round-robin.html"><strong>Link to Code</strong></a></li>
+                  <li><a href="code/w-round-robin.html"><strong>Link to Code [15]</strong></a></li>
                 </ul>
               </li>
             </ul>
@@ -770,7 +786,7 @@
                   <li>Time Complexity: O(n * m * k²) where n,m are image dimensions and k is kernel size</li>
                   <li>Space Complexity: O(n * m) for output storage</li>
                   <br>
-                  <li><a href="code/2D-conv.html"><strong>Link to Code</strong></a></li>
+                  <li><a href="code/2D-conv.html"><strong>Link to Code [16]</strong></a></li>
                 </ul>
               </li>
               <br>
@@ -780,7 +796,7 @@
                   <li>Time Complexity:  O(n log n) where n is number of samples</li>
                   <li>Space Complexity: O(n) for frequency domain representation</li>
                   <br>
-                  <li><a href="code/fast-fourier.html"><strong>Link to Code</strong></a></li>
+                  <li><a href="code/fast-fourier.html"><strong>Link to Code [17]</strong></a></li>
                 </ul>
               </li>
             </ul>
@@ -793,7 +809,10 @@
           <div class="flow-text">
             <h4 class="teal-text">9. Cryptocurrency Mining Optimization</h4>
             <div style="text-align: center;">
+              <figure>
               <img src="/assets/img/use-case-9.png" class="responsive-img" alt="Description of image">
+              <figcaption>SHA-256 hashing process [18]</figcaption>
+              </figure>
             </div>
             <p><strong>Business Use Case</strong>: NVIDIA GPUs utilize hash function algorithms and nonce search optimization for cryptocurrency mining. Parallel search algorithms distribute hash computations across thousands of CUDA cores for maximum mining efficiency.</p>
             <p><strong>NVIDIA Infrastructure</strong>: Parallel Hash Algorithms for cryptocurrency mining optimization.</p>
@@ -807,7 +826,7 @@
                   <li>Time Complexity: O(1) per hash operation</li>
                   <li>Space Complexity: O(1) for hash state</li>
                   <br>
-                  <li><a href="code/SHA-256.html"><strong>Link to Code</strong></a></li>
+                  <li><a href="code/SHA-256.html"><strong>Link to Code [18]</strong></a></li>
                 </ul>
               </li>
               <br>
@@ -828,7 +847,10 @@
           <div class="flow-text">
             <h4 class="teal-text">10. Scientific Simulation and Molecular Dynamics</h4>
             <div style="text-align: center;">
+              <figure>
               <img src="/assets/img/use-case-10.gif" class="responsive-img" alt="Description of image">
+                <figcaption>N-body Simulation</figcaption>
+              </figure>
             </div>
             <p><strong>Business Use Case</strong>: NVIDIA's HPC platforms employ N-body simulation algorithms and molecular dynamics calculations for scientific research. Particle interaction algorithms utilize spatial partitioning and force calculation optimization.</p>
             <p><strong>NVIDIA Infrastructure</strong>: N-body Algorithms and Spatial Partitioning for scientific simulations.</p>
@@ -842,7 +864,7 @@
                   <li>Time Complexity: O(n²) for direct calculation, O(n log n) with optimization</li>
                   <li>Space Complexity: O(n) for particle storage</li>
                   <br>
-                  <li><a href="code/n-body-sim.html"><strong>Link to Code</strong></a></li>
+                  <li><a href="code/n-body-sim.html"><strong>Link to Code [19]</strong></a></li>
                 </ul>
               </li>
               <br>
@@ -857,7 +879,33 @@
           </div>
           </div>
         </section>
+        <br>
 
+        <div class="container">
+          <div class="flow-text">
+            <h4 class="teal-text">References</h4>
+              <p>[1] NVIDIA. (n.d.). Hopper GPU Architecture. NVIDIA. https://www.nvidia.com/en-us/data-center/technologies/hopper-architecture/</p>
+              <p>[2] GeeksforGeeks. (2025, March 12). 0-1 Knapsack Problem - DP-10. GeeksforGeeks. https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/</p>
+              <p>[3] GeeksforGeeks. (2023, May 31). First‑Fit Allocation in Operating Systems. GeeksforGeeks. https://www.geeksforgeeks.org/first-fit-allocation-in-operating-systems/</p>
+              <p>[4] GeeksforGeeks. (2024, July 30). A Search Algorithm*. GeeksforGeeks. https://www.geeksforgeeks.org/a-search-algorithm/</p>
+              <p>[5] GeeksforGeeks. (2025, April 17). Trie: Insert and Search. GeeksforGeeks. https://www.geeksforgeeks.org/trie-insert-and-search/</p>
+              <p>[6] GeeksforGeeks. (2025, February 25). KMP Algorithm for Pattern Searching. GeeksforGeeks. https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/</p>
+              <p>[7] GeeksforGeeks. (2025, January 13). Program for Round Robin Scheduling for the Same Arrival Time. GeeksforGeeks. https://www.geeksforgeeks.org/program-for-round-robin-scheduling-for-the-same-arrival-time/</p>
+              <p>[8] GeeksforGeeks. (2023, September 14). Program for Priority CPU Scheduling | Set 1. GeeksforGeeks. https://www.geeksforgeeks.org/program-for-priority-cpu-scheduling-set-1/</p>
+              <p>[9] Brilliant. (n.d.). Dijkstra’s Shortest Path Algorithm. Brilliant Math & Science Wiki. https://brilliant.org/wiki/dijkstras-short-path-finder/</p>
+              <p>[10] GeeksforGeeks. (2025, May 21). Dijkstra’s Algorithm to find shortest paths from a source to all. GeeksforGeeks. https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/</p>
+              <p>[11] nimRobotics. (n.d.). RRT: Rapidly-exploring Random Tree path planning algorithm [Source code]. GitHub. https://github.com/nimRobotics/RRT</p>
+              <p>[12] Huffman coding. (2025, accessed June 8). In Wikipedia. Retrieved from https://en.wikipedia.org/wiki/Huffman_coding</p>
+              <p>[13] GeeksforGeeks. (2024, July 19). Huffman Coding in C. GeeksforGeeks. https://www.geeksforgeeks.org/huffman-coding-in-c/</p>
+              <p>[14] Lokam, R. (2022, January 9). Consistent Hashing. Medium. https://medium.com/@lokam.r/consistent-hashing-78d3128858c</p>
+              <p>[15] Ngugi, J. (2019, December 14). motor.py [Source code]. GitHub Gist. https://gist.github.com/Ngugi1/1c9601f0d2eb5c1c5f4af6f40b9588dc</p>
+              <p>[16] Sahoo, S. (2020, June 17). 2D Convolution using Python & NumPy. Analytics Vidhya. https://medium.com/analytics-vidhya/2d-convolution-using-python-numpy-43442ff5f381</p>
+              <p>[17] University of California, Berkeley. (n.d.). Fast Fourier Transform (FFT). In Python Numerical Methods. Retrieved June 8, 2025, from</p>
+              <p>[18] Veness, C. (n.d.). SHA‑256 Cryptographic Hash Algorithm implemented in JavaScript. Movable Type Scripts. Retrieved June 8, 2025, from https://www.movable-type.co.uk/scripts/sha256.html</p>
+              <p>[19] Lewis, M. (2017, January 4). NBodyMutable.cpp [Source code]. GitHub Gist. https://gist.github.com/MarkCLewis/e1bf5fca8394916231cdc0ccbecdefc3</p>
+
+          </div>
+        </div>
     <!-- Eight Section: Contact -->
     <section id="contact" class="section scrollspy full-height">
       <h3 class="page-title white-text teal">Contact</h3>
