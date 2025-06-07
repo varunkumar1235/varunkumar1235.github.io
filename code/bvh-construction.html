@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GPU Memory Allocation - Knapsack Algorithm</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(
+          135deg,
+          #0f0f23 0%,
+          #1a1a2e 50%,
+          #16213e 100%
+        );
+        min-height: 100vh;
+        color: #e0e0e0;
+      }
+
+      .code-container {
+        background: rgba(15, 15, 35, 0.95);
+        border-radius: 12px;
+        padding: 30px;
+        margin: 40px auto;
+        max-width: 900px;
+        box-shadow: 0 8px 32px rgba(0, 255, 157, 0.1);
+        border: 1px solid rgba(0, 255, 157, 0.2);
+      }
+
+      .page-title {
+        text-align: center;
+        color: #00ff9d;
+        font-weight: 300;
+        margin-bottom: 30px;
+        text-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+      }
+
+      .algorithm-description {
+        background: rgba(0, 255, 157, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        border-left: 4px solid #00ff9d;
+      }
+
+      pre {
+        background: #1e1e3f !important;
+        border-radius: 8px;
+        padding: 25px;
+        overflow-x: auto;
+        border: 1px solid rgba(0, 255, 157, 0.3);
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+
+      code {
+        color: #e0e0e0;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .back-button {
+        background: linear-gradient(45deg, #00ff9d, #00d4aa);
+        border: none;
+        border-radius: 25px;
+        padding: 12px 30px;
+        font-size: 16px;
+        font-weight: 500;
+        text-transform: none;
+        box-shadow: 0 4px 15px rgba(0, 255, 157, 0.3);
+        transition: all 0.3s ease;
+        margin-top: 40px;
+      }
+
+      .back-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 255, 157, 0.4);
+        background: linear-gradient(45deg, #00d4aa, #00ff9d);
+      }
+
+      .button-container {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .complexity-info {
+        background: rgba(255, 193, 7, 0.1);
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+        border-left: 4px solid #ffc107;
+      }
+
+      .highlight {
+        color: #00ff9d;
+      }
+
+      /* Syntax highlighting overrides */
+      .token.keyword {
+        color: #ff79c6;
+      }
+      .token.string {
+        color: #f1fa8c;
+      }
+      .token.comment {
+        color: #6272a4;
+      }
+      .token.number {
+        color: #bd93f9;
+      }
+      .token.function {
+        color: #50fa7b;
+      }
+      .token.operator {
+        color: #ff79c6;
+      }
+      .token.punctuation {
+        color: #f8f8f2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="code-container">
+        <pre><code class="language-cpp">def build_BVH(objects):
+    if len(objects) == 0:
+        return None
+
+    # Step 1: Compute the bounding box of all objects
+    global_bbox = compute_bounding_box(objects)
+
+    # Step 2: Base case: if few objects, make a leaf node
+    if len(objects) <= MAX_LEAF_SIZE:
+        return BVHNode(bbox=global_bbox, left=None, right=None, objects=objects)
+
+    # Step 3: Choose the axis to split (longest axis)
+    axis = global_bbox.largest_extent_axis()
+
+    # Step 4: Sort objects by the centroid along the chosen axis
+    objects.sort(key=lambda obj: obj.centroid()[axis])
+
+    # Step 5: Split the objects into two halves
+    mid = len(objects) // 2
+    left_objects = objects[:mid]
+    right_objects = objects[mid:]
+
+    # Step 6: Recursively build BVH for each half
+    left_node = build_BVH(left_objects)
+    right_node = build_BVH(right_objects)
+
+    # Step 7: Return parent node
+    return BVHNode(bbox=global_bbox, left=left_node, right=right_node)
+
+</code></pre>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  </body>
+</html>

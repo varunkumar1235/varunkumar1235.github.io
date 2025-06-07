@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GPU Memory Allocation - Knapsack Algorithm</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(
+          135deg,
+          #0f0f23 0%,
+          #1a1a2e 50%,
+          #16213e 100%
+        );
+        min-height: 100vh;
+        color: #e0e0e0;
+      }
+
+      .code-container {
+        background: rgba(15, 15, 35, 0.95);
+        border-radius: 12px;
+        padding: 30px;
+        margin: 40px auto;
+        max-width: 900px;
+        box-shadow: 0 8px 32px rgba(0, 255, 157, 0.1);
+        border: 1px solid rgba(0, 255, 157, 0.2);
+      }
+
+      .page-title {
+        text-align: center;
+        color: #00ff9d;
+        font-weight: 300;
+        margin-bottom: 30px;
+        text-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+      }
+
+      .algorithm-description {
+        background: rgba(0, 255, 157, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        border-left: 4px solid #00ff9d;
+      }
+
+      pre {
+        background: #1e1e3f !important;
+        border-radius: 8px;
+        padding: 25px;
+        overflow-x: auto;
+        border: 1px solid rgba(0, 255, 157, 0.3);
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+
+      code {
+        color: #e0e0e0;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .back-button {
+        background: linear-gradient(45deg, #00ff9d, #00d4aa);
+        border: none;
+        border-radius: 25px;
+        padding: 12px 30px;
+        font-size: 16px;
+        font-weight: 500;
+        text-transform: none;
+        box-shadow: 0 4px 15px rgba(0, 255, 157, 0.3);
+        transition: all 0.3s ease;
+        margin-top: 40px;
+      }
+
+      .back-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 255, 157, 0.4);
+        background: linear-gradient(45deg, #00d4aa, #00ff9d);
+      }
+
+      .button-container {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .complexity-info {
+        background: rgba(255, 193, 7, 0.1);
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+        border-left: 4px solid #ffc107;
+      }
+
+      .highlight {
+        color: #00ff9d;
+      }
+
+      /* Syntax highlighting overrides */
+      .token.keyword {
+        color: #ff79c6;
+      }
+      .token.string {
+        color: #f1fa8c;
+      }
+      .token.comment {
+        color: #6272a4;
+      }
+      .token.number {
+        color: #bd93f9;
+      }
+      .token.function {
+        color: #50fa7b;
+      }
+      .token.operator {
+        color: #ff79c6;
+      }
+      .token.punctuation {
+        color: #f8f8f2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="code-container">
+        <pre><code class="language-cpp">#include <iostream>
+#include <vector>
+#include <queue>
+#include <climits>
+using namespace std;
+
+// Function to construct adjacency 
+vector<vector<vector<int>>> constructAdj(vector<vector<int>> 
+                             &edges, int V) {
+                                 
+    // adj[u] = list of {v, wt}
+    vector<vector<vector<int>>> adj(V); 
+
+    for (const auto &edge : edges) {
+        int u = edge[0];
+        int v = edge[1];
+        int wt = edge[2];
+        adj[u].push_back({v, wt});
+        adj[v].push_back({u, wt}); 
+    }
+    
+    return adj;
+}
+
+// Returns shortest distances from src to all other vertices
+vector<int> dijkstra(int V, vector<vector<int>> &edges, int src){
+    
+    // Create adjacency list
+    vector<vector<vector<int>>> adj = constructAdj(edges, V);
+
+    // Create a priority queue to store vertices that
+    // are being preprocessed.
+    priority_queue<vector<int>, vector<vector<int>>, 
+                   greater<vector<int>>> pq;
+
+    // Create a vector for distances and initialize all
+    // distances as infinite
+    vector<int> dist(V, INT_MAX);
+
+    // Insert source itself in priority queue and initialize
+    // its distance as 0.
+    pq.push({0, src});
+    dist[src] = 0;
+
+    // Looping till priority queue becomes empty (or all
+    // distances are not finalized) 
+    while (!pq.empty()){
+        
+        // The first vertex in pair is the minimum distance
+        // vertex, extract it from priority queue.
+        int u = pq.top()[1];
+        pq.pop();
+
+        // Get all adjacent of u.
+        for (auto x : adj[u]){
+            
+            // Get vertex label and weight of current
+            // adjacent of u.
+            int v = x[0];
+            int weight = x[1];
+
+            // If there is shorter path to v through u.
+            if (dist[v] > dist[u] + weight)
+            {
+                // Updating distance of v
+                dist[v] = dist[u] + weight;
+                pq.push({dist[v], v});
+            }
+        }
+    }
+
+    return dist;
+}
+
+// Driver program to test methods of graph class
+int main(){
+    int V = 5;
+    int src = 0;
+
+    // edge list format: {u, v, weight}
+    vector<vector<int>> edges = {{0, 1, 4}, {0, 2, 8}, {1, 4, 6}, 
+                                 {2, 3, 2}, {3, 4, 10}};
+
+    vector<int> result = dijkstra(V, edges, src);
+
+    // Print shortest distances in one line
+    for (int dist : result)
+        cout << dist << " ";
+ 
+    return 0;
+}
+
+</code></pre>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  </body>
+</html>

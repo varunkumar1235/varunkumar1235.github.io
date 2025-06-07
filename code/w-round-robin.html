@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GPU Memory Allocation - Knapsack Algorithm</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(
+          135deg,
+          #0f0f23 0%,
+          #1a1a2e 50%,
+          #16213e 100%
+        );
+        min-height: 100vh;
+        color: #e0e0e0;
+      }
+
+      .code-container {
+        background: rgba(15, 15, 35, 0.95);
+        border-radius: 12px;
+        padding: 30px;
+        margin: 40px auto;
+        max-width: 900px;
+        box-shadow: 0 8px 32px rgba(0, 255, 157, 0.1);
+        border: 1px solid rgba(0, 255, 157, 0.2);
+      }
+
+      .page-title {
+        text-align: center;
+        color: #00ff9d;
+        font-weight: 300;
+        margin-bottom: 30px;
+        text-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+      }
+
+      .algorithm-description {
+        background: rgba(0, 255, 157, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        border-left: 4px solid #00ff9d;
+      }
+
+      pre {
+        background: #1e1e3f !important;
+        border-radius: 8px;
+        padding: 25px;
+        overflow-x: auto;
+        border: 1px solid rgba(0, 255, 157, 0.3);
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+
+      code {
+        color: #e0e0e0;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .back-button {
+        background: linear-gradient(45deg, #00ff9d, #00d4aa);
+        border: none;
+        border-radius: 25px;
+        padding: 12px 30px;
+        font-size: 16px;
+        font-weight: 500;
+        text-transform: none;
+        box-shadow: 0 4px 15px rgba(0, 255, 157, 0.3);
+        transition: all 0.3s ease;
+        margin-top: 40px;
+      }
+
+      .back-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 255, 157, 0.4);
+        background: linear-gradient(45deg, #00d4aa, #00ff9d);
+      }
+
+      .button-container {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .complexity-info {
+        background: rgba(255, 193, 7, 0.1);
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+        border-left: 4px solid #ffc107;
+      }
+
+      .highlight {
+        color: #00ff9d;
+      }
+
+      /* Syntax highlighting overrides */
+      .token.keyword {
+        color: #ff79c6;
+      }
+      .token.string {
+        color: #f1fa8c;
+      }
+      .token.comment {
+        color: #6272a4;
+      }
+      .token.number {
+        color: #bd93f9;
+      }
+      .token.function {
+        color: #50fa7b;
+      }
+      .token.operator {
+        color: #ff79c6;
+      }
+      .token.punctuation {
+        color: #f8f8f2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="code-container">
+        <pre><code class="language-cpp"><?php
+
+/**
+ * @author Alexis Gruet
+ * 
+ * A simple implementation of the Weighted Round-Robin Scheduling in PHP 5.3+
+ * 
+ * The weighted round-robin scheduling is designed to better handle servers with different 
+ * processing capacities. Each server can be assigned a weight, an integer value that 
+ * indicates the processing capacity. Servers with higher weights receive new connections 
+ * first than those with less weights, and servers with higher weights get more connections 
+ * than those with less weights and servers with equal weights get equal connections.
+ * 
+ * Note : 
+ *  composer     is required 
+ *  array_column is required - use ./composer.phar require rhumsaa/array_column:~1.1 
+ *  predis       is required - use ./composer.phar require predis/predis:~0.7.3
+ *  
+ *  
+ * $aProvider represents an array of partners with their associated weights. 
+ * 
+ * For example, the partners, 1, 2 and 3, have the weights, 4, 3, 2 
+ * respectively, a scheduling sequence will be 1 1 2 1 2 3 1 2 3 in a scheduling 
+ * period (mod sum(w(provider))).
+ * 
+ * Useful when you want to send smartly balanced traffic to a remote api or something else
+ * 
+ * @see http://kb.linuxvirtualserver.org/wiki/Weighted_Round-Robin_Scheduling
+ */
+
+const __I__  = 'round-robin-dispatch-i';
+const __CW__ = 'round-robin-dispatch-cw';
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$c = new \Pimple;
+
+/**
+ * Registering predis
+ */
+$c[ 'predis' ] = (function () {
+	return new Predis\Client( array(
+		'scheme' => 'tcp',
+		'host'   => '127.0.0.1',
+		'port'   => '6379'
+	));
+});
+
+/**
+ * A list of partners with their associated weights
+ */
+$aProvider = array(
+	0 => array( 
+		'provider' => 'partner1',   
+		'weight'   => 4 ),
+	1 => array( 
+		'provider' => 'partner2', 
+		'weight'   => 3 ),
+	2 => array( 
+		'provider' => 'partner3', 
+		'weight'   => 2 )
+);
+
+/**
+ * A simple array used for stats
+ */
+$aStats = array(
+	'partner1'   => 0,
+	'partner2'   => 0,
+	'partner3'   => 0,
+);
+
+/**
+ * Weighted round robin algorithm
+ */
+$wrr = function() use( $c, $aProvider ) {
+	
+	$n  = count( $aProvider );
+	$i  = $c[ 'predis' ]->exists( __I__ )  ? $c[ 'predis' ]->get( __I__ )   : -1;
+	$cw = $c[ 'predis' ]->exists( __CW__ ) ? $c[ 'predis' ]->get( __CW__ )  : 0;
+	
+	/**
+	 * greatest common divisor of all provider weights;
+	 */
+	$gcd = function() use ( $aProvider ) {
+		$gcd = function ( $a, $b ) use ( &$gcd ) {
+			return $b ? $gcd( $b, $a % $b ) : $a;
+		};
+		return array_reduce( array_column( $aProvider, 'weight' ), $gcd );
+	};
+	
+	/**
+	 * get the max weight across the whole providers
+	 */
+	$max = array_reduce( $aProvider, function( $v, $w ) {
+		return max( $v, $w[ 'weight' ] );
+	}, -9999999 );
+	
+	/**
+	 * get the weight of a specific provider
+	 */
+	$w = function( $provider ) use ( $aProvider ) {
+		return $aProvider[ $provider ][ 'weight' ];
+	};
+	
+	while( 1 ) {
+		
+		$i = ( $i + 1 ) % $n; $c[ 'predis' ]->set( __I__, $i );
+		if ( $i == 0 ) {
+			 $cw = $cw - $gcd(); $c[ 'predis' ]->set( __CW__, $cw );
+			 if ( $cw <= 0 ) {
+			 	$cw = $max; $c[ 'predis' ]->set( __CW__, $cw );
+			 	if ( $cw == 0 ) {
+			 		return NULL;
+			 	}
+			 }
+		}
+		if ( $w( $i ) >= $cw ) {
+			return $aProvider[ $i ];
+		}
+	}
+};
+
+for ( $k=1;$k<=100;$k++ ) {
+	
+	$current = $wrr();
+	
+	echo  '----------------------'       		     . PHP_EOL;
+	echo  'Iteration       :: ' . $k    		     . PHP_EOL;
+	echo  'Will be sent to :: ' . $current[ 'provider' ] . PHP_EOL;
+	
+	$aStats[ $current[ 'provider' ] ]++;
+	
+	//sleep( 1 );
+}
+
+echo  PHP_EOL;
+echo  PHP_EOL;
+echo  'Statistics' . PHP_EOL;
+echo  '---------------------------------------' . PHP_EOL;
+print_r( $aStats );
+</code></pre>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  </body>
+</html>
